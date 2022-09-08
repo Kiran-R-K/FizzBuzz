@@ -6,50 +6,56 @@ def fizzbuzz
 
   maximum_number = maximum_number_request
 
+
   for i in 1..maximum_number
-    result = []
-    fizz = 'Fizz'
-    fezz = 'Fezz'
-    buzz = 'Buzz'
-    bang = 'Bang'
-    bong = 'Bong'
-    if i % 11 == 0
-      result << bong
-    elsif i % 3 == 0
-      result << fizz
+
+    def multiple_of_eleven(i)
+      i % 11 == 0 ? @result << @bong : nil
+    end
+
+    @result = []
+    @fizz = 'Fizz'
+    @fezz = 'Fezz'
+    @buzz = 'Buzz'
+    @bang = 'Bang'
+    @bong = 'Bong'
+    multiple_of_eleven_rule = true
+    multiple_of_eleven_rule ? multiple_of_eleven(i) : nil
+    if i % 3 == 0
+      @result << @fizz
       if i % 5 == 0
-        result << buzz
+        @result << @buzz
         if i % 7 == 0
-          result << bang
+          @result << @bang
         end
       else
         if i % 7 == 0
-          result << bang
+          @result << @bang
         end
       end
     elsif i % 5 == 0
-      result << buzz
+      @result << @buzz
       if i % 7 == 0
-        result << bang
+        @result << @bang
       end
     elsif i % 7 == 0
-      result << bang
+      @result << @bang
     elsif i % 13 == 0
-      result << fezz
+      @result << @fezz
     else
-      result << i
+      @result << i
     end
-    if i % 13 == 0 && result[0] != fezz
-      if result[0] == fizz
-          result.insert(1,fezz)
+    if i % 13 == 0 && @result[0] != @fezz
+      if @result[0] == @fizz
+        @result.insert(1,@fezz)
       else
-        result.insert(0,fezz)
+        @result.insert(0,@fezz)
       end
     end
     if i % 17 == 0
-      result = result.reverse
+      @result = @result.reverse
     end
-    puts result.join
+    puts @result.join
   end
 
 
